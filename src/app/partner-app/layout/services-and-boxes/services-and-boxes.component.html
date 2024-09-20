@@ -1,0 +1,52 @@
+<app-partner-header></app-partner-header>
+<div class="services-container" style="margin-top: 16px;">
+  <h2 class="title">Услуги и боксы</h2>
+  <div class="tabs-container">
+    <div class="line-tabs">
+      <div class="tabs">
+        <button class="Inter tab" [class.active]="activeTab === 'tab1'" (click)="setActiveTab('tab1')">Услуги</button>
+        <button class="Inter tab" [class.active]="activeTab === 'tab2'" (click)="setActiveTab('tab2')">Боксы</button>
+      </div>
+      <button class="Inter add-button" (click)="onAddButtonClick()">Добавить</button>
+    </div>
+    <div class="services" *ngIf="activeTab === 'tab1'">
+      <div style="display: flex; align-items: baseline; margin-bottom: 8px;">
+        <h3 class="Inter services-title">Услуги</h3>
+        <label class="Inter services-count">{{ servicesCount }}</label>
+      </div>
+      <div class="service" *ngFor="let service of services">
+        <label class="Inter service-name">{{ service.name }}</label>
+        <div style="display: flex;">
+          <div style="display:flex; flex-direction: column; margin-right: 30px;">
+            <label class="Inter service-price">{{ service.price }} ₽</label>
+            <label class="Inter service-duration">~{{ service.duration / 60000 }} мин</label>
+          </div>
+          <div (click)="deleteService(service.id)" style="cursor: pointer; margin-right: 15px;">
+            <img src="assets/images/delete-icon.png"/>
+          </div>
+          <div (click)="onEditService(service)" style="cursor: pointer;">
+            <img src="assets/images/update-icon.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="boxes" *ngIf="activeTab === 'tab2'">
+      <div style="display: flex; align-items: baseline; margin-bottom: 8px;">
+        <h3 class="Inter services-title">Боксы</h3>
+        <label class="Inter services-count">{{ boxesCount }}</label>
+      </div>
+      <div class="box" *ngFor="let box of boxes">
+        <label class="Inter box-name">{{ box.name }}</label>
+        <div style="display: flex;">
+          <div (click)="deleteBox(box.id)" style="cursor: pointer; margin-right: 15px;">
+            <img src="assets/images/delete-icon.png"/>
+          </div>
+          <div (click)="onEditBox(box)" style="cursor: pointer;">
+            <img src="assets/images/update-icon.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>

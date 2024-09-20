@@ -1,0 +1,48 @@
+h3 {
+  margin: 0;
+}
+
+.page-container {
+  max-width: 1200px;
+  box-sizing: border-box;
+  display: flex;
+  margin: 40px auto;
+}
+
+.profile-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B5B8C3;
+  background-color: white;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.profile-input {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  padding: 4px 20px;
+  gap: 10px;
+  background-color: white;
+  max-width: 360px;
+  height: 48px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.profile-pic input[type="file"] {
+  display: none;
+}

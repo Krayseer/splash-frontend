@@ -1,0 +1,52 @@
+<header class="header">
+  <div class="container">
+    <div (click)="goToMain()" class="header-logo" style="cursor: pointer;">
+      <a>
+        <img src="../../../assets/images/logoimage.svg" alt="Logo"/>
+      </a>
+    </div>
+    <div>
+      <button class="header-button dark-button" (click)="goToMain()">Главная</button>
+      <button class="header-button light-button" (click)="goToOrder()">Запись</button>
+    </div>
+    <div class="user-info">
+      <div class="user-group" *ngIf="user; else loginLink">
+        <img class="user-img" style="margin-right: 6px" src="assets/images/user.svg"/>
+        <label style="font-weight: 700; font-size: 15px; margin-right: 10px; cursor: pointer;" [routerLink]="['/user-profile']">{{ user.name }}</label>
+        <div style="position: relative; display: inline-block;">
+          <img src="assets/images/notification.svg" style="margin-right: 10px;" (click)="toggleNotificationsPopup()"/>
+          <div *ngIf="showRedDot" class="red-dot"></div>
+        </div>
+        <img src="assets/images/logout.png" style="cursor: pointer;" (click)="logout()"/>
+      </div>
+      <ng-template #loginLink>
+        <a (click)="redirectToLogin()" class="Inter" style="font-weight: 700; font-size: 15px; margin-right: 5px; cursor: pointer;">Войти</a>
+      </ng-template>
+    </div>
+  </div>
+  <div class="notifications-popup" *ngIf="showNotificationsPopup">
+    <div class="tabs" style="margin-bottom: 20px;">
+      <button class="Inter tab" (click)="setActiveTab('notifications')" [class.active]="activeTab === 'notifications'">Уведомления</button>
+      <button class="Inter tab" (click)="setActiveTab('invitations')" [class.active]="activeTab === 'invitations'">Приглашения</button>
+    </div>
+    <div class="tab-content" *ngIf="activeTab === 'notifications'">
+      <ul>
+        <li class="list-item" *ngFor="let notification of notifications; let i = index">
+          <label>{{ notification.message }}</label>
+          <img (click)="deleteNotification(notification.id)" style="cursor:pointer;" src="assets/images/delete-icon.png"/>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" *ngIf="activeTab === 'invitations'">
+      <ul>
+        <li class="list-item" *ngFor="let invitation of getSentInvitations(); let i = index">
+          <label>Приглашение на работу от {{ invitation.configuration.name }}</label>
+          <div style="display: flex;">
+            <img (click)="applyInvitation(invitation.id)" src="assets/images/accept.png" style="cursor: pointer; margin-right: 10px;"/>
+            <img (click)="rejectInvitation(invitation.id)" src="assets/images/reject.png" style="cursor:pointer;"/>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

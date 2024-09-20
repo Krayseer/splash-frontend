@@ -1,0 +1,42 @@
+<div class="modal-container">
+  <div class="title-close">
+    <h2 class="Inter title">Заказ</h2>
+    <div class="close-button" (click)="close()">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.93934 0.93934C1.52513 0.353553 2.47487 0.353553 3.06066 0.93934L9 6.87868L14.9393 0.93934C15.5251 0.353553 16.4749 0.353553 17.0607 0.93934C17.6464 1.52513 17.6464 2.47487 17.0607 3.06066L11.1213 9L17.0607 14.9393C17.6464 15.5251 17.6464 16.4749 17.0607 17.0607C16.4749 17.6464 15.5251 17.6464 14.9393 17.0607L9 11.1213L3.06066 17.0607C2.47487 17.6464 1.52513 17.6464 0.93934 17.0607C0.353553 16.4749 0.353553 15.5251 0.93934 14.9393L6.87868 9L0.93934 3.06066C0.353553 2.47487 0.353553 1.52513 0.93934 0.93934Z" fill="#7F8494"/>
+      </svg>
+    </div>
+  </div>
+  <div style="display: flex;">
+    <div style="width: 50%;">
+      <div style="display: flex;">
+        <img class="user-image" [src]="currentData.user.photoUrl != null ? currentData.user.photoUrl : 'assets/images/recomendation.png'">
+        <div style="display: flex; flex-direction: column;">
+          <label class="Inter user-name">{{ currentData.user.name }}</label>
+          <label class="Inter user-number">{{ currentData.user.phoneNumber }}</label>
+        </div>
+      </div>
+    </div>
+    <div style="width: 50%;" class="service">
+      <label class="Inter service-title" >Услуги</label>
+      <div style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; margin-bottom: 16px;">
+        <div *ngFor="let service of currentData.services" style="display: flex; justify-content: space-between; align-items: center">
+          <label class="Inter" style="font-size: 18px; line-height: 24px; font-weight: 500;">{{ service.name }}</label>
+          <div style="display: flex; flex-direction: column;">
+            <label class="Inter" style="font-size: 18px; line-height: 24px; font-weight: 700;">{{ service.price }} ₽</label>
+            <label class="Inter" style="font-size: 14px; line-height: 16px; font-weight: 400; color: #7F8494;">~{{ service.duration / 60000 }} мин</label>
+          </div>
+        </div>
+      </div>
+      <label class="Inter" style="font-size: 20px; line-height: 24px; font-weight: 600;">Итого</label>
+      <div style="display:flex; justify-content: space-between;">
+        <label class="Inter" style="font-size: 18px; line-height: 24px; font-weight: 400;">Сумма</label>
+        <label class="Inter" style="font-size: 20px; line-height: 24px; font-weight: 600;">{{ getTotalPrice() }} ₽</label>
+      </div>
+      <div style="display:flex; justify-content: space-between;">
+        <label class="Inter" style="font-size: 18px; line-height: 24px; font-weight: 400;">Время</label>
+        <label class="Inter" style="font-size: 20px; line-height: 24px; font-weight: 600;">{{ getTotalTime() / 60000 }} мин</label>
+      </div>
+    </div>
+  </div>
+</div>

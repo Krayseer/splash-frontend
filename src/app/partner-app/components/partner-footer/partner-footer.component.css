@@ -1,0 +1,43 @@
+.container {
+  max-width: 1200px;
+  display: flex;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.footer .container {
+  background-color: #1D1D2D;
+  border-radius: 30px 30px 0px 0px;
+  padding: 33px 40px;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reference{
+  color: #B5B8C3;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+
+.reference:last-child {
+  margin-bottom: 0;
+}
+
+.reference-light {
+  color: #F4F6FA;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+
+.reference-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.reference-block:last-child {
+  margin-right: 0;
+}

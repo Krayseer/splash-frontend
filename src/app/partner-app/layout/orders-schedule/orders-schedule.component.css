@@ -1,0 +1,87 @@
+.schedule-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.schedule-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr); /* 1 column for box names + 13 columns for time slots */
+  gap: 2px;
+}
+
+.time-header {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.box-name {
+  grid-column: 1;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.time-slot {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.time-slot.booked {
+  background-color: #b1d0e0;
+}
+
+.order-cont {
+  border: 1px solid #B1B4BE;
+  background-color: #F1F2F3;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.order-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  margin-right: 17px;
+}
+
+.order-username {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.order-phonenumber {
+  font-size: 16px;
+  line-height: 24px;
+  color: #666B7A;
+}
+
+.order-time {
+  font-size: 18px;
+  line-height: 24px;
+  color: #3A3D45;
+}
+
+.order-price {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}

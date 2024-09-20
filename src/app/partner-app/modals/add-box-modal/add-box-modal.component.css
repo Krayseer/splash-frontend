@@ -1,0 +1,67 @@
+.modal-container {
+  padding: 32px 20px;
+  border: 1px solid #B1B4BE;
+  background-color: white;
+  width: 400px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-close {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 40px;
+  color: #1D1D2D;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E6E7EA;
+  padding: 11px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 32px;
+}
+
+.close-button svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.box-input {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.add-button {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  background-color: #134EF2;
+  padding: 16px 30px;
+  border-radius: 10px;
+  border: none;
+}

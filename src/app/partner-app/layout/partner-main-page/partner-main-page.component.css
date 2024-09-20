@@ -1,0 +1,73 @@
+.orders-cont {
+  max-width: 740px;
+  width: 100%;
+  background-color: #F4F6FA;
+  border: 1px solid #B5B8C3;
+  border-radius: 30px;
+  display: flex;
+  margin: 0 auto 72px auto;
+  padding: 33px 40px;
+  box-sizing: border-box;
+}
+
+.reclama {
+  max-width: 740px;
+  width: 100%;
+  background-color: #F4F6FA;
+  border: 1px solid #B5B8C3;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 72px auto;
+  padding: 24px 40px;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B1B4BE;
+  border-radius: 20px;
+  padding: 16px;
+  width: 160px;
+  height: 120px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.label-text {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.reclama-title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.reclama-second-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 40px;
+}
+
+.reclama-text {
+  margin-bottom: 80px;
+}
+
+.reclama-button {
+  padding: 12px 76px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  background-color: #134EF2;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

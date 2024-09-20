@@ -1,0 +1,273 @@
+.order-registration {
+  background-color: #F4F6FA;
+  border: 1px solid #B5B8C3;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 24px 40px;
+  box-sizing: border-box;
+}
+
+.order-registration-title {
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.step {
+  background-color: #1D1D2D;
+  border-radius: 500px;
+  padding: 8px 15px;
+  margin-bottom: 40px;
+}
+
+.step-label {
+  color: #F4F6FA;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.map {
+  border-radius: 15px;
+  border: 1px solid #B5B8C3;
+  margin-bottom: 80px;
+}
+
+.car-washes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.car-wash-info {
+  max-width: 750px; /* Максимальная ширина */
+  width: 100%; /* Ширина по умолчанию */
+  box-sizing: border-box; /* Включаем отступы и границы в ширину элемента */
+  margin: 0 auto;
+}
+
+.step2-photo {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+}
+
+.car-washes-item {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  width: 250px;
+  justify-content: space-between;
+}
+
+
+.car-washes-item-title {
+  margin:  0 0 8px 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.car-washes-item-address {
+  color: #B5B8C3;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.car-washes-item-phone {
+  color: #B5B8C3;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.car-washes-item-image {
+  width: 250px;
+  height: 125px;
+}
+
+.car-washes-item-price {
+  color: #B5B8C3;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.car-washes-item-button {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 2px solid #1D1D2D;
+  color: #1D1D2D;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 20px;
+  max-width: 170px;
+}
+
+.selected-car-wash-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 40px;
+  margin-bottom: 16px;
+}
+
+.selected {
+  background-color: #1D1D2D;
+  color: #F4F6FA
+}
+
+.continue-button {
+  background-color: #134EF2;
+  min-width: 360px;
+  padding: 16px;
+  color: #F4F6FA;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.reg-step2 {
+  padding: 24px 19% 24px 19%;
+}
+
+.service {
+  border: 1px solid #B5B8C3;
+  border-radius: 10px;
+  background-color: #F4F6FA;
+  padding: 8px 22px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 550px;
+  align-items: center;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.service:last-child {
+  margin-bottom: 30px;
+}
+
+.services {
+  max-height: 200px;
+  margin-bottom: 40px;
+  overflow-y: auto;
+}
+
+.service {
+  cursor: pointer; /* Указатель мыши для интерактивного элемента */
+
+  &.selected-service {
+    background-color: #134EF2; /* Задаем фон для выделенного элемента */
+
+    .service-name,
+    .service-price,
+    .service-duration {
+      color: white; /* Перекрашиваем лейблы в белый цвет при выборе */
+    }
+  }
+}
+
+.service-name {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #1D1D2D;
+}
+
+.service-price {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #1D1D2D;
+}
+
+.service-duration {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #7F8494;
+}
+
+.datetime-label {
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 8px;
+  color: #1D1D2D;
+  font-weight: 600;
+}
+
+.ng-select.custom {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  width: 250px;
+  font-size: 16px;
+  font-weight: 400;
+  height: 60px;
+  padding-bottom: 0;
+}
+.ng-select.custom ::ng-deep .ng-select-container  {
+  border-bottom: none;
+  padding: 0 8px;
+}
+
+.ng-select.custom ::ng-deep .ng-select-container:after {
+  border-bottom: none;
+}
+
+.ng-select.custom ::ng-deep .ng-dropdown-panel {
+  border-radius: 10px;
+  width: 200px;
+  max-height: 300px; /* Задаем максимальную высоту для прокрутки */
+  overflow-y: auto; /* Включаем прокрутку по вертикали */
+  overflow-x: hidden; /* Скрываем прокрутку по горизонтали */
+}
+
+/* Стили для скрытия скроллбара */
+.ng-select.custom ::ng-deep .ng-dropdown-panel::-webkit-scrollbar {
+  display: none; /* Скрываем скроллбар для веб-кит браузеров (Chrome, Safari) */
+}
+
+.ng-select.custom ::ng-deep .ng-dropdown-panel {
+  scrollbar-width: none; /* Скрываем скроллбар для Firefox */
+}
+
+/* Дополнительно для IE и Edge */
+@supports (-ms-overflow-style: none) {
+  .ng-select.custom ::ng-deep .ng-dropdown-panel {
+    -ms-overflow-style: none; /* Скрываем скроллбар для IE и Edge */
+  }
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-controls button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carousel-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="page-container">
+  <app-settings style="margin-right: 35px;"></app-settings>
+  <div class="profile-container">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between;">
+          <h2 class="Inter">Мой аккаунт</h2>
+        </div>
+        <div>
+          <h3 class="Inter">Имя</h3>
+          <input [ngModel]="user?.name" class="Inter profile-input" readonly/>
+        </div>
+        <div>
+          <h3 class="Inter">Фамилия</h3>
+          <input [ngModel]="user?.surname" class="Inter profile-input" readonly/>
+        </div>
+        <div>
+          <h3 class="Inter">Имя пользователя</h3>
+          <input [ngModel]="user?.username" class="Inter profile-input" readonly/>
+        </div>
+        <div>
+          <h3 class="Inter">Почта</h3>
+          <input [ngModel]="user?.email" class="Inter profile-input" readonly/>
+        </div>
+        <div>
+          <h3 class="Inter">Номер телефона</h3>
+          <input [ngModel]="user?.phoneNumber" class="Inter profile-input" readonly/>
+        </div>
+      </div>
+      <div>
+        <div class="profile-pic-wrapper">
+          <label>
+            <img [src]="profilePicUrl" alt="Profile Picture" class="profile-pic" (click)="onProfilePicClick()">
+          </label>
+          <input type="file" id="file-upload" accept="image/*" (change)="onFileSelected($event)" #fileInput style="display: none;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

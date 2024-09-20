@@ -1,0 +1,70 @@
+<app-partner-header></app-partner-header>
+<div class="page-container">
+  <app-partner-settings style="margin-right: 35px;"></app-partner-settings>
+  <div class="employees-container">
+    <h2 class="employees-title">Сотрудники</h2>
+    <div class="tabs">
+      <button class="Inter tab" [class.active]="activeTab === 'tab1'" (click)="setActiveTab('tab1')">Список сотрудников</button>
+      <button class="Inter tab" [class.active]="activeTab === 'tab2'" (click)="setActiveTab('tab2')">График работы</button>
+      <button class="Inter tab" [class.active]="activeTab === 'tab3'" (click)="setActiveTab('tab3')">История приглашений</button>
+    </div>
+    <div class="content">
+      <div *ngIf="activeTab === 'tab1'">
+        <div class="invitation">
+          <input type="text" placeholder="Название компании" class="company-input"/>
+          <button class="invitation-button" (click)="openDialog()">Пригласить</button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+            <tr>
+              <th class="Inter name-column">Имя</th>
+              <th class="Inter status-column">Статус</th>
+              <th class="Inter roles-column">Роль</th>
+              <th class="Inter email-column">Почта</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employee of employees">
+              <td class="Inter name-column">{{ employee.name }}</td>
+              <td class="status-column">
+                <div class="Inter status-container">Активен</div>
+              </td>
+              <td class="roles-column">
+                <div class="roles-container">
+                  <div class="Inter role-container" *ngFor="let role of employee.roles">{{ role }}</div>
+                </div>
+              </td>
+              <td class="Inter email-column">{{ employee.email }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="activeTab === 'tab2'">Контент для графика работы</div>
+      <div *ngIf="activeTab === 'tab3'">
+        <div class="table-container">
+          <table>
+            <thead>
+            <tr>
+              <th class="Inter name-column">Имя</th>
+              <th class="Inter roles-column">Роли</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let inv of invitations">
+              <td class="Inter name-column">{{ inv.username }}</td>
+              <td class="roles-column">
+                <div class="roles-container">
+                  <div class="Inter role-container" *ngFor="let role of inv.roles">{{ role }}</div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>

@@ -1,0 +1,53 @@
+<app-partner-header></app-partner-header>
+<div class="page-container">
+  <app-partner-settings style="margin-right: 35px;"></app-partner-settings>
+  <div class="company-information-container">
+    <h2 class="Inter company-information-title">Информация о компании</h2>
+    <h3 class="Inter company-name">Название компании</h3>
+    <input [(ngModel)]="name" class="Inter company-name-input" placeholder="Название компании"/>
+    <h3 class="Inter company-clocks">Время работы</h3>
+    <div style="margin-bottom: 40px;">
+      <mat-form-field appearance="fill" style="border-radius: 10px; margin-right: 30px;">
+        <input matInput [ngxTimepicker]="startPicker" [format]="24" placeholder="Открытие" readonly [(ngModel)]="openTime">
+        <ngx-material-timepicker #startPicker [minutesGap]="5" (closed)="onTimeStartChange(openTime)">
+        </ngx-material-timepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="border-radius: 10px;">
+        <input matInput [ngxTimepicker]="endPicker" [format]="24" placeholder="Закрытие" readonly [(ngModel)]="closeTime">
+        <ngx-material-timepicker #endPicker [minutesGap]="5" (closed)="onTimeEndChange(closeTime)"></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
+    <h3 class="Inter company-phone-title">Телефон</h3>
+    <input class="company-phone" [(ngModel)]="phoneNumber"
+           style="margin-bottom: 40px;"
+           type="tel"
+           prefix="+7"
+           mask="(000) 000 00 00"
+           [showMaskTyped]="true"
+           [dropSpecialCharacters]="true"
+    />
+    <h3 class="Inter company-descr">Описание</h3>
+    <textarea [(ngModel)]="description" placeholder="Введите текст" class="Inter company-descr-text"></textarea>
+    <div style="display: flex; align-items: baseline; margin-bottom: 40px;">
+      <input [(ngModel)]="managementProcessOrders" type="checkbox" style="width: 20px; height: 20px;">
+      <label class="Inter" style="font-size: 20px; font-weight: 600;">Обработка заказов менеджером</label>
+    </div>
+    <div #mapContainer id="map" style="width: 100%; height: 500px; margin-bottom: 40px;"></div>
+    <div style="display:flex; align-items: baseline; margin-bottom: 8px;">
+      <h3 class="Inter company-name" style="margin-right: 5px; margin-bottom: 0;">Адрес</h3>
+      <label style="font-size: 14px; color: #989CA9; font-weight: 400;">Определяется исходя из точки на карте</label>
+    </div>
+    <textarea style="max-width: 550px; min-height: 100px;" [(ngModel)]="address" class="Inter company-name-input" placeholder="Адрес" readonly></textarea>
+    <div class="button-container" style="margin-bottom: 16px;">
+      <button class="Inter upload-photo" (click)="triggerFileInput()">Загрузить фото</button>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple style="display: none;">
+    </div>
+    <div class="photo-list">
+      <div *ngFor="let photo of photos" class="photo-item">
+        <img *ngIf="photo" [src]="photo" alt="Uploaded Photo">
+      </div>
+    </div>
+    <button (click)="onSave()" class="Inter upload-photo" style="background-color: #134EF2; color: white;">Сохранить</button>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>

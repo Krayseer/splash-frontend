@@ -1,0 +1,40 @@
+.page-container {
+  max-width: 1200px;
+  box-sizing: border-box;
+  display: flex;
+  margin: 40px auto;
+}
+
+.notification-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B5B8C3;
+  background-color: white;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.notification-title {
+  margin: 0 0 16px 0;
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #1D1D2D;
+}
+
+.status {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #1D1D2D;
+}
+
+.status-tooltip {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #7F8494;
+  margin: 0 0 16px 0;
+}

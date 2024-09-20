@@ -1,0 +1,149 @@
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  box-sizing: border-box;
+  display: flex;
+  background-color: white;
+  border-radius: 19px;
+  padding: 40px;
+  border: 1px solid #B5B8C3;
+  flex-direction: column;
+  min-height: 800px;
+}
+
+.boxes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 40px;
+  margin-bottom: 8px;
+}
+
+.line-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.add-button {
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  background-color: #134EF2;
+  padding: 8px 32px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.tab:last-child {
+  margin-right: 0;
+}
+
+.tab.active {
+  background-color: #CFDBFC;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0 5px 0 0;
+}
+
+.services-count {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #7F8494;
+}
+
+.service {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  padding: 8px 22px;
+  background-color: #E7EDFE;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  max-width: 550px;
+  align-items: center;
+}
+
+.box {
+  border: none;
+  padding: 8px 22px;
+  background-color: #E7EDFE;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  max-width: 550px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service:last-child {
+  margin-bottom: 0;
+}
+
+.box:last-child {
+  margin-bottom: 0;
+}
+
+.service-name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #1D1D2D;
+}
+
+.box-name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #1D1D2D;
+}
+
+.service-price {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1D1D2D;
+}
+
+.service-duration {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7F8494;
+}

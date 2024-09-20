@@ -1,0 +1,31 @@
+<app-partner-header></app-partner-header>
+<div class="schedule-container" style="margin-bottom: 40px; margin-top: 20px;">
+  <div style="display: flex; flex-direction: column;">
+    <mat-form-field appearance="fill" style="width: 250px;">
+      <mat-label>Выберите дату</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" [min]="minDate" (dateChange)="dateChanges()" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div style="display: flex;">
+      <div *ngFor="let order of orders" class="order-cont" (click)="openOrderDialog(order)" style="cursor: pointer;">
+        <div style="display:flex; margin-bottom: 8px;">
+          <img [src]="order.user.photoUrl != null ? order.user.photoUrl : 'assets/images/recomendation.png'" class="order-img">
+          <div style="display: flex; flex-direction: column;">
+            <label class="Inter order-username">{{ order.user.username }}</label>
+            <label class="Inter order-phonenumber">{{ order.user.phoneNumber }}</label>
+          </div>
+        </div>
+        <div style="margin-bottom: 8px;">
+          <label></label>
+          <label class="Inter order-time">{{ getTimeFromISOString(order.startTime) }} ~ {{getTimeFromISOString(order.endTime)}} • {{getDateFromISOString(order.startTime)}}</label>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <label class="Inter order-price">Итого</label>
+          <label class="Inter order-price">{{getPrice(order.services)}} ₽</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>

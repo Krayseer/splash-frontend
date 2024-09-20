@@ -1,0 +1,102 @@
+<app-header></app-header>
+<div class="order-registration" *ngIf="isVisibleFirst">
+  <h2 class="Inter order-registration-title">Оформление заявки</h2>
+  <div class="step">
+    <label class="step-label Inter">Шаг 1 из 3 • Выбор автомойки</label>
+  </div>
+  <div #mapContainer id="map" style="width: 100%; height: 500px; margin-bottom: 40px;"></div>
+  <div class="car-washes">
+    <div class="car-washes-item" *ngFor="let carWash of carWashes">
+      <div style="display: flex; flex-direction: column">
+        <img class="car-washes-item-image" [src]="carWash.photoUrls && carWash.photoUrls.length > 0 ? carWash.photoUrls[0] : 'assets/images/recomendation.png'"/>
+        <h3 class="Inter car-washes-item-title">{{ carWash.name }}</h3>
+        <label class="Inter car-washes-item-address">{{ carWash.address }}</label>
+        <label class="Inter car-washes-item-phone">{{ carWash.phoneNumber }}</label>
+        <label class="Inter car-washes-item-price">{{ carWash.name }}</label>
+      </div>
+      <button class="Inter car-washes-item-button"
+              [ngClass]="{'selected': selectedCarWashId === carWash.id}"
+              (click)="selectCarWash(carWash.id)">
+        <ng-container *ngIf="selectedCarWashId === carWash.id; else notSelected">Выбрано</ng-container>
+        <ng-template #notSelected>Выбрать</ng-template>
+      </button>
+    </div>
+  </div>
+  <button class="Inter continue-button" [disabled]="selectedCarWashId === -1" (click)="goToSecondStep()"
+          [ngStyle]="{'opacity': selectedCarWashId === -1 ? '0.5' : '1', 'cursor': selectedCarWashId === -1 ? 'not-allowed' : 'pointer'}">Далее</button>
+</div>
+<div class="order-registration reg-step2" *ngIf="isVisibleSecond && selectedCarWashId !== -1">
+  <h2 class="Inter order-registration-title">Оформление заявки</h2>
+  <div class="step">
+    <label class="step-label Inter">Шаг 2 из 3 • Выбор услуг</label>
+  </div>
+  <div class="car-wash-info" *ngIf="selectedConfiguration">
+    <h3 style="margin: 0;" class="Inter selected-car-wash-title">{{ selectedConfiguration.name }}</h3>
+    <div class="carousel">
+      <img [src]="currentImage" class="step2-photo"/>
+      <div *ngIf="selectedConfiguration.photoUrls && selectedConfiguration.photoUrls.length > 0" class="carousel-controls">
+        <button (click)="prevImage()">&#10094;</button>
+        <button (click)="nextImage()">&#10095;</button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; margin-bottom: 16px">
+      <label class="Inter">{{ selectedConfiguration.address }}</label>
+      <label class="Inter">{{ selectedConfiguration.phoneNumber }}</label>
+    </div>
+    <div style="display: flex; flex-direction: column; margin-bottom: 40px;">
+      <h3 style="margin: 0 0 7px 0; font-size: 20px; line-height: 24px; font-weight: 600;" class="Inter">Описание</h3>
+      <p style="margin: 0;" class="Inter">{{ selectedConfiguration.description }}</p>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <label class="Inter" style="font-size: 20px; line-height: 24px; font-weight: 600; margin-bottom: 8px;">Услуги</label>
+    <div style="display: flex; flex-direction: column;" *ngIf="selectedConfiguration" class="services">
+      <div class="service" *ngFor="let service of selectedConfiguration.services; let i = index"
+           [ngClass]="{'selected-service': isSelected(i)}"
+           (click)="toggleServiceSelection(i)">
+        <label class="Inter service-name">{{ service.name }}</label>
+        <div style="display: flex; flex-direction: column;">
+          <label class="Inter service-price">{{ service.price }} Р</label>
+          <label class="Inter service-duration">~{{ service.duration / 60000 }} мин</label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label class="Inter" style="font-size: 20px; line-height: 24px; font-weight: 600;">Итого</label>
+      <div style="display: flex; justify-content: space-between;">
+        <label style="font-size: 18px; line-height: 24px;">Сумма</label>
+        <label style="font-size: 20px; line-height: 24px; font-weight: 600;">{{ getTotalPrice() }} ₽</label>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <label style="font-size: 18px; line-height: 24px;">Время</label>
+        <label style="font-size: 20px; line-height: 24px; font-weight: 600;">~{{ getTotalTime() }} мин</label>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex;">
+    <div style="display: flex; flex-direction: column; margin-right: 20px;" *ngIf="selectedServicesIndices.length > 0">
+      <label class="Inter datetime-label">Дата</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Выберите дату</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" [min]="minDate" (dateChange)="dateChanges()" readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div *ngIf="selectedDate" style="display: flex; flex-direction: column;">
+      <label class="Inter datetime-label">Время</label>
+      <ng-select [items]="timeSlots" placeholder="Выберите время"
+                 bindLabel="slot" class="custom" [(ngModel)]="selectedTime">
+      </ng-select>
+    </div>
+  </div>
+  <button class="Inter continue-button" [disabled]="selectedServicesIndices.length === 0 || selectedTime == null"
+          [ngStyle]="{'opacity': selectedServicesIndices.length === 0 || selectedTime == null ? '0.5' : '1', 'cursor': selectedServicesIndices.length === 0 || selectedTime == null ? 'not-allowed' : 'pointer'}"
+          (click)="sendOrder()">
+    Забронировать
+  </button>
+</div>
+<div *ngIf="isVisibleThird">
+
+</div>
+<app-footer></app-footer>

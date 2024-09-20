@@ -1,0 +1,35 @@
+<app-partner-header></app-partner-header>
+<div class="reclama">
+  <h2 class="Inter reclama-title">Добро пожаловать в Сплэш Партнер!</h2>
+  <h3 class="Inter reclama-second-title">Заполните информацию о компании</h3>
+  <p class="Inter reclama-text">Заполните информацию о компании. Укажите название, описание. Установите время работы, чтобы клиенты могли подбирать время. Настройте адрес с помощью удобных Яндекс карт.</p>
+  <button class="Inter reclama-button" routerLink="/comp-information">Перейти к заполнению</button>
+</div>
+<div class="orders-cont">
+  <div style="width: 50%;">
+    <h2>Заказы</h2>
+  </div>
+  <div style="display: flex; width: 50%; flex-wrap: wrap; justify-content: space-around;">
+    <div class="card">
+      <img src="assets/images/clock.png" style="height: 25px; width: 25px;">
+      <label class="Inter label-text">На выполнении</label>
+      <label class="Inter label-text">{{ activeOrdersCount }}</label>
+    </div>
+    <div class="card">
+      <img src="assets/images/queue.png" style="height: 25px; width: 25px;">
+      <label class="Inter label-text">В очереди</label>
+      <label class="Inter label-text">{{ waitConfirmOrdersCount }}</label>
+    </div>
+    <div class="card">
+      <img src="assets/images/process.png" style="height: 25px; width: 25px;">
+      <label class="Inter label-text">В обработке</label>
+      <label class="Inter label-text">{{ processingOrdersCount }}</label>
+    </div>
+    <div class="card">
+      <img src="assets/images/ok.png" style="height: 25px; width: 25px;">
+      <label class="Inter label-text">Выполнены</label>
+      <label class="Inter label-text">{{ processedOrdersCount }}</label>
+    </div>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>

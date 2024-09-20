@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header-logo">
+    <a>
+      <img src="../../../assets/images/logoimage.svg" alt="Logo"/>
+    </a>
+  </div>
+  <div class="registration-container">
+    <h1 class="registration-title">Регистрация</h1>
+    <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="input-div input-name" style="display: flex; justify-content: space-between">
+        <input formControlName="name" style="margin-right: 24px;" placeholder="Имя" class="input" type="text" id="name" name="name" ngModel required>
+        <input formControlName="surname" placeholder="Фамилия" class="input" type="text" id="surname" name="surname" ngModel required>
+      </div>
+      <div class="input-div">
+        <input formControlName="email" placeholder="Почта" class="input" type="email" id="email" name="email" ngModel required email>
+      </div>
+      <div class="input-div">
+        <input formControlName="username" placeholder="Логин" class="input" type="text" id="username" name="username" ngModel required>
+      </div>
+      <div class="input-div">
+        <input formControlName="phoneNumber" placeholder="+7 (999) 999 99 99" class="input" type="tel" id="phoneNumber" name="phoneNumber" ngModel required>
+      </div>
+      <div class="input-div">
+        <input formControlName="password" placeholder="Пароль" class="input" type="password" id="password" name="password" ngModel required>
+      </div>
+      <button type="submit" [disabled]="!registrationForm.valid" [ngStyle]="{ 'opacity': registrationForm.valid ? 1 : 0.5 }" class="submit-button">Продолжить</button>
+    </form>
+    <div class="bottom-text-div">
+      <label style="margin-right: 4px;" class="bottom-text">Уже есть аккаунт? </label>
+      <a style="text-decoration: underline;" class="bottom-text" (click)="redirectToLogin()">Войти</a>
+    </div>
+  </div>
+</div>

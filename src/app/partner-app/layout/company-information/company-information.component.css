@@ -1,0 +1,205 @@
+h3 {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  color: #1D1D2D;
+}
+
+.page-container {
+  max-width: 1200px;
+  box-sizing: border-box;
+  display: flex;
+  margin: 40px auto;
+}
+
+.company-information-container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B5B8C3;
+  background-color: white;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.company-information-title {
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 600;
+  color: #1D1D2D;
+  margin: 0 0 24px 0;
+}
+
+.company-name {
+  margin-bottom: 8px;
+}
+
+.company-name-input {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  padding: 4px 20px;
+  gap: 10px;
+  background-color: white;
+  max-width: 360px;
+  height: 48px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.company-clocks {
+  margin: 0 0 8px 0;
+}
+
+.company-clocks-input {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 4px 20px;
+  gap: 10px;
+  background-color: white;
+  border: 2px solid #B1B4BE;
+  height: 48px;
+}
+
+.company-phone-title {
+  margin: 0 0 10px 0;
+}
+
+.company-phone {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 4px 20px;
+  gap: 10px;
+  background-color: white;
+  border: 2px solid #B1B4BE;
+  height: 48px;
+  max-width: 360px;
+}
+
+.company-descr {
+  margin: 0 0 4px 0;
+}
+
+.company-descr-text {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 16px 20px;
+  gap: 10px;
+  background-color: white;
+  border: 2px solid #B1B4BE;
+  height: 48px;
+  max-width: 550px;
+  min-height: 260px;
+  margin: 0 0 20px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start; /* Или flex-end, или center, в зависимости от потребности */
+}
+
+.upload-photo {
+  background-color: #CFDBFC;
+  color: #134EF2;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 16px 30px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-list img {
+  width: 270px;
+  height: 150px;
+  object-fit: cover;
+}
+
+input,
+textarea {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #B1B4BE;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #B1B4BE;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #B1B4BE;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #B1B4BE;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #B1B4BE;
+}
+
+.spinner-value {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  padding: 4px 20px;
+  gap: 10px;
+  background-color: white;
+  max-width: 360px;
+  height: 48px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.photo-item img {
+  border: 2px solid #B1B4BE;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.photo-item {
+  width: calc(33.33% - 20px); /* Делим ширину на три части и убираем отступ */
+  margin-right: 20px;
+}
+
+.photo-item:nth-child(3n) {
+  margin-right: 0; /* Убираем отступ у каждого третьего элемента */
+}

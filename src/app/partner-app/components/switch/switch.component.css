@@ -1,0 +1,56 @@
+.switch {
+  display: flex; /* Используем flexbox для управления размещением элементов */
+  align-items: center; /* Выравниваем элементы по вертикали */
+  width: 170px; /* Адаптивная ширина */
+  justify-content: space-between;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: relative; /* Используем относительное позиционирование */
+  cursor: pointer;
+  width: 50px; /* Ширина переключателя */
+  height: 26px; /* Высота переключателя */
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+  margin-right: 0;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px; /* Высота точки переключателя */
+  width: 22px; /* Ширина точки переключателя */
+  left: 4px; /* Положение точки относительно левого края */
+  top: 50%;
+  transform: translateY(-50%); /* Центрируем точку вертикально */
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - 24px); /* Изменяем положение точки при включении */
+}
+
+.span-switch {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}

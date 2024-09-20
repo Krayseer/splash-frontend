@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="header-logo">
+    <a>
+      <img src="assets/images/logo.svg" alt="LogoPartner" style="cursor:pointer;" [routerLink]="['/main']"/>
+    </a>
+  </div>
+  <div class="registration-container">
+    <h1 class="Inter registration-title">Регистрация мойки</h1>
+    <form class="form" #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+      <div class="input-div" [ngClass]="{'has-error': tin.invalid && (tin.dirty || tin.touched)}">
+        <input placeholder="ИНН" class="input" type="text" id="INN" name="tin" ngModel #tin="ngModel" required pattern="[0-9]*" [minlength]="12" [maxlength]="12">
+        <div *ngIf="tin.invalid && (tin.dirty || tin.touched)" class="error-tooltip">
+          Невалидный ИНН
+        </div>
+      </div>
+      <div class="input-div" [ngClass]="{'has-error': typeOrganization.invalid && (typeOrganization.dirty || typeOrganization.touched)}">
+        <select class="input" id="typeOrganization" name="typeOrganization" ngModel #typeOrganization="ngModel" required>
+          <option value="" disabled selected style="color: #B5B8C3;">Выберите тип организации</option>
+          <option value="IP">ИП</option>
+          <option value="OOO">ООО</option>
+        </select>
+        <div *ngIf="typeOrganization.invalid && (typeOrganization.dirty || typeOrganization.touched)" class="error-tooltip">
+          Тип организации обязателен
+        </div>
+      </div>
+      <div style="margin-bottom: 40px" class="input-div" [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched)}">
+        <input placeholder="Почта" class="input" type="email" id="email" name="email" ngModel #email="ngModel" required email>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-tooltip">
+          Введите правильный email
+        </div>
+      </div>
+      <button type="submit" class="submit-button" [disabled]="registrationForm.invalid">Зарегистрировать</button>
+    </form>
+
+  </div>
+</div>

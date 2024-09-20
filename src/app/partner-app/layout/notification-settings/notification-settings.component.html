@@ -1,0 +1,24 @@
+<app-partner-header></app-partner-header>
+<div class="page-container">
+  <app-partner-settings style="margin-right: 35px"></app-partner-settings>
+  <div class="notification-container">
+    <h2 class="Inter notification-title">Настройки уведомлений</h2>
+    <h3 class="Inter status">Статус заказов</h3>
+    <p class="Inter status-tooltip">Получайте информацию о&nbsp;статусе заказов</p>
+    <app-switch [labelText]="'Почта'" [isChecked]="statusEmail"
+                (switchChanged)="statusEmailChanged($event)" style="margin-bottom: 16px;"></app-switch>
+    <app-switch [labelText]="'СМС'" [isChecked]="statusSms"
+                (switchChanged)="statusSmsChanged($event)" style="margin-bottom: 16px;"></app-switch>
+    <app-switch [labelText]="'Push'" [isChecked]="statusPush"
+                (switchChanged)="statusPushChanged($event)" style="margin-bottom: 46px;"></app-switch>
+    <h3 class="Inter status">Электронные чеки</h3>
+    <p class="Inter status-tooltip">Получайте информацию о&nbsp;чеках</p>
+    <app-switch [labelText]="'Почта'" [isChecked]="checkEmail"
+                (switchChanged)="checkEmailChanged($event)" style="margin-bottom: 16px;"></app-switch>
+    <app-switch [labelText]="'СМС'" [isChecked]="checkSms"
+                (switchChanged)="checkSmsChanged($event)" style="margin-bottom: 16px;"></app-switch>
+    <app-switch [labelText]="'Push'" [isChecked]="checkPush"
+                (switchChanged)="checkPushChanged($event)"></app-switch>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>
