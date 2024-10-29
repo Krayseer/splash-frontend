@@ -1,0 +1,21 @@
+<app-partner-header></app-partner-header>
+<div class="chats-container">
+  <h2>Чаты</h2>
+  <div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let message of messages" class="chat-message">
+        <strong>{{ message.sender }}:</strong> {{ message.content }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input
+        type="text"
+        [(ngModel)]="messageContent"
+        (keyup.enter)="sendMessage()"
+        placeholder="Введите сообщение..."
+      />
+      <button (click)="sendMessage()">Отправить</button>
+    </div>
+  </div>
+</div>
+<app-partner-footer></app-partner-footer>
