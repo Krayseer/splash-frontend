@@ -36,7 +36,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
 
 @NgModule({
   declarations: [AppComponent], // Добавляем основной компонент
-  imports: [BrowserModule, AppRoutingModule, ComponentsModule, LayoutModule, HttpClientModule, KeycloakAngularModule],
+  imports: [BrowserModule,
+    AppRoutingModule,
+    ComponentsModule,
+    LayoutModule,
+    HttpClientModule,
+    KeycloakAngularModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

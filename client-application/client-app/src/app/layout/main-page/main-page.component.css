@@ -1,0 +1,106 @@
+.container {
+  max-width: 1200px;
+  display: flex;
+  margin: 40px auto 72px auto;
+  box-sizing: border-box;
+}
+
+.reclama {
+  background-color: #134EF2;
+  padding: 72px 40px;
+  border-radius: 30px;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto 72px auto;
+  box-sizing: border-box;
+}
+
+.reclama-left-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.reclama-left-side-text {
+  font-weight: 900;
+  font-size: 44px;
+  color: #E9ECF3;
+  line-height: 70px;
+  margin: 0 0 68px 0;
+}
+
+.reclama-left-side-button {
+  background-color: transparent;
+  border: 2px solid #F4F6FA;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #F4F6FA;
+  max-width: 360px;
+}
+
+.reclama-right-side {
+  margin-left: auto;
+}
+
+.about-us {
+  max-width: 1200px;
+  width: 100%;
+  background-color: #F4F6FA;
+  border: 1px solid #B5B8C3;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 72px auto;
+  padding: 33px 40px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.about-us-recomendations {
+  display: flex;
+  margin-bottom: 64px;
+}
+
+.about-us-title {
+  text-align: center;
+  margin: 0 0 24px 0;
+  font-weight: 800;
+  font-size: 32px;
+}
+
+.about-us-recomendations-item {
+  background-color: #CAD6EF;
+  border-radius: 20px;
+  margin-right: 20px;
+  border: 1px solid #1D1D2D;
+  padding: 16px;
+}
+
+.about-us-recomendations-item:last-child {
+  margin-right: 0;
+}
+
+.about-us-button {
+  background-color: transparent;
+  max-width: 360px;
+  color: #134EF2;
+  font-weight: 700;
+  font-size: 20px;
+  border: 2px solid #134EF2;
+  padding: 16px 59px;
+  border-radius: 10px;
+}
+
+.partner-button {
+  background-color: #134EF2;
+  max-width: 360px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px 101px;
+  border-radius: 10px;
+  border: none;
+}

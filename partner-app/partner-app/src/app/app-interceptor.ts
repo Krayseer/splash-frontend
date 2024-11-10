@@ -23,10 +23,10 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log('Request Http Interceptor ...');
 
-    const isExcluded = this.excludedUrls.some(url => request.url.includes(url));
-    if (isExcluded) {
-      return next.handle(request);
-    }
+    // const isExcluded = this.excludedUrls.some(url => request.url.includes(url));
+    // if (isExcluded) {
+    //   return next.handle(request);
+    // }
 
     this.authService.getAccessToken();
     const authToken = localStorage.getItem('token');

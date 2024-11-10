@@ -41,6 +41,9 @@
     <div class="button-container" style="margin-bottom: 16px;">
       <button class="Inter upload-photo" (click)="triggerFileInput()">Загрузить фото</button>
       <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple style="display: none;">
+
+      <button class="Inter upload-photo" (click)="triggerFileInputVideo('video')">Загрузить видео</button>
+      <input type="file" id="videoInput" (change)="onVideoSelected($event)" multiple accept="video/*" style="display: none;">
     </div>
     <div class="photo-list">
       <div *ngFor="let photo of photos" class="photo-item">

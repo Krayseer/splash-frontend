@@ -1,21 +1,16 @@
 import {AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
-import {PartnerHeaderComponent} from "../../components/partner-header/partner-header.component";
-import {PartnerSettingsComponent} from "../../components/partner-settings/partner-settings.component";
-import {IConfig, NgxMaskDirective, provideEnvironmentNgxMask, provideNgxMask} from "ngx-mask";
-import {bootstrapApplication} from "@angular/platform-browser";
-import {AppComponent} from "../../../app.component";
-import {FormBuilder, FormGroup, FormsModule, Validators} from "@angular/forms";
-import {MatFormField, MatSuffix} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
-import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
-import {MatButton} from "@angular/material/button";
-import {PartnerFooterComponent} from "../../components/partner-footer/partner-footer.component";
+import {IConfig, provideNgxMask} from "ngx-mask";
+import {FormBuilder} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {Configuration} from "../../../models/wash-config";
-import {NgForOf, NgIf} from "@angular/common";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {
+  Address,
+  ConfigurationDTO,
+  ConfigurationInfoDTO,
+  OrderProcessMode,
+  OrganizationInfo
+} from "../car-wash-registration/car-wash-registration.component";
 
 declare const ymaps: any;
 
@@ -106,18 +101,17 @@ export class CompanyInformationComponent implements OnInit, AfterViewInit {
     }
 
   getConfigs() {
-    this.http.get<Configuration>("api/car-wash/configuration").subscribe(
-      (data: Configuration) => {
-        this.name = data.name;
-        this.description = data.description;
-        this.phoneNumber = data.phoneNumber;
-        this.address = data.address;
-        this.openTime = data.openTime;
-        this.closeTime = data.closeTime;
-        this.longitude = data.longitude;
-        this.latitude = data.latitude;
-        this.managementProcessOrders = data.managementProcessOrders;
-        this.photos = data.photoUrls;
+    this.http.get<ConfigurationInfoDTO>("backend/car-wash/configuration").subscribe(
+      (data: ConfigurationInfoDTO) => {
+        this.name = data.organizationInfo?.name || '';
+        this.description = data.organizationInfo?.description || '';
+        this.phoneNumber = data.organizationInfo?.phoneNumber || '';
+        this.address = data.address?.address || '';
+        this.openTime = data.openTime || '';
+        this.closeTime = data.closeTime || '';
+        this.longitude = data.address?.longitude || '';
+        this.latitude = data.address?.latitude || '';
+        this.photos = data.photoUrls || [];
         console.log(data);
         if (this.longitude && this.latitude) {
           const coordinates = [parseFloat(this.latitude), parseFloat(this.longitude)];
@@ -136,7 +130,7 @@ export class CompanyInformationComponent implements OnInit, AfterViewInit {
           this.map.setCenter(coordinates, 7);
         }
       }, error => {
-        if (error.error && error.error.errorData.includes("Configuration for user")) {
+        if (error.error && error.error.message.includes("Configuration for user")) {
           this.snackBar.open('Необходимо зарегистрировать автомойку', 'Закрыть', {
             duration: 3000,
           });
@@ -171,29 +165,54 @@ export class CompanyInformationComponent implements OnInit, AfterViewInit {
     }
   }
 
+  onVideoSelected(event: any): void {
+
+  }
+
   triggerFileInput(): void {
     document.getElementById('fileInput')!.click();
   }
 
+  triggerFileInputVideo(): void {
+    document.getElementById('videoInput')!.click();
+}
+
 
   onSave() {
+    const organizationInfo: OrganizationInfo = {
+      name: this.name,
+      description: this.description,
+      phoneNumber: this.phoneNumber
+    }
+
+    const address: Address = {
+      address: this.address,
+      longitude: this.longitude.toString(),
+      latitude: this.latitude.toString()
+    }
+    const configurationDTO: ConfigurationDTO = {
+      id: 2,
+      userId: '8d1192c2-7afe-4ffe-a294-5281978cb886',
+      organizationInfo: organizationInfo,
+      address: address,
+      openTime: this.openTime,
+      closeTime: this.closeTime,
+      orderProcessMode: OrderProcessMode.AUTO,
+      photos: this.selectedFiles
+    }
     const formData = new FormData();
-    formData.append('name', this.name);
-    formData.append('description', this.description);
-    formData.append('phoneNumber', this.phoneNumber);
-    formData.append('address', this.address);
+    formData.append('organizationInfo', JSON.stringify(organizationInfo));
+    formData.append('address', JSON.stringify(address));
     formData.append('openTime', this.openTime);
     formData.append('closeTime', this.closeTime);
-    formData.append('longitude', this.longitude.toString());
-    formData.append('latitude', this.latitude.toString());
-    formData.append('managementProcessOrders', JSON.stringify(this.managementProcessOrders));
+    formData.append('orderProcessMode', JSON.stringify(OrderProcessMode.AUTO));
     if (this.selectedFiles && this.selectedFiles.length > 0) {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         formData.append('photos', this.selectedFiles[i]);
       }
     }
 
-    this.http.put("api/car-wash/configuration", formData).subscribe(
+    this.http.put("backend/car-wash/configuration", formData).subscribe(
       response => {
         console.log('Данные сохранены успешно', response);
       },

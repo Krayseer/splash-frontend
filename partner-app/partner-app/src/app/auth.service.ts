@@ -28,7 +28,7 @@ export class AuthService {
   async getAccessToken(){
     try {
       this.accessToken = await this.kcService.getToken().then((resp) => {return resp});
-      // console.log('accessToken :>> ', this.accessToken);
+      console.log('accessToken :>> ', this.accessToken);
       localStorage.setItem('token', this.accessToken);
     } catch (error) {
       console.log('error :>> ', error);

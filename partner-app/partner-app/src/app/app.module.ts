@@ -10,9 +10,19 @@ import {ModalsModule} from "./partner-app/modals/modals.module";
 import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {AppInterceptorInterceptor} from "./app-interceptor";
+import {AngularYandexMapsModule, YaConfig} from "angular8-yandex-maps";
+import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
+import {RouterModule} from "@angular/router";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+
+const mapConfig: YaConfig = {
+  apikey: '3e8e4a0c-1e23-442b-90f9-98cc4c51987d',
+  lang: 'en_US',
+};
 
 function initializeKeycloak(keycloak: KeycloakService) {
+  console.log("Start keycloak init")
   return () =>
     keycloak.init({
       config: {
@@ -49,21 +59,24 @@ function initializeKeycloak(keycloak: KeycloakService) {
     DirectivesModule,
     ModalsModule,
     HttpClientModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    AngularYandexMapsModule.forRoot(mapConfig),
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [
-    provideHttpClient(withFetch())
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AppInterceptorInterceptor,
-    //   multi: true,
-    // },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeKeycloak,
-    //   multi: true,
-    //   deps: [KeycloakService],
-    // }
+    provideHttpClient(withFetch()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptorInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    }
   ],
   bootstrap: [AppComponent]
 })

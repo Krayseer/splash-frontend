@@ -1,7 +1,8 @@
 import {Component, Inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
-import {ChatWebSocketService} from "../../../services/chat-web-socket-service";
+//import {ChatWebSocketService} from "../../../services/chat-web-socket-service";
 import {IMessage} from "@stomp/stompjs";
 import {isPlatformBrowser} from "@angular/common";
+import {ChatWebSocketService} from "../../../services/chat-web-socket-service";
 
 
 export interface ChatMessage {
@@ -15,50 +16,63 @@ export interface ChatMessage {
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.css'
 })
-export class ChatsComponent implements OnInit, OnDestroy {
+export class ChatsComponent implements OnInit {
 
   messages: { sender: string; content: string }[] = [];
   messageContent: string = '';
   private subscription: any;
   private token: string | null = null;
 
-  constructor(private chatService: ChatWebSocketService, @Inject(PLATFORM_ID) private platformId: object) {}
+  private socket!: WebSocket;
+
+  constructor( @Inject(PLATFORM_ID) private platformId: object) {}
 
   ngOnInit(): void {
-    // Проверяем, выполняется ли код в браузере
-    if (isPlatformBrowser(this.platformId)) {
-      this.token = localStorage.getItem('token');
-      const socketUrl = 'http://localhost:8080/ws';
-
-      this.chatService.initialize(socketUrl, this.token!);
-
-      this.subscription = this.chatService.subscribe('/topic/messages', (message: IMessage) => {
-        const messageBody = JSON.parse(message.body);
-        this.messages.push({ sender: messageBody.sender, content: messageBody.content });
-      });
-    }
+    // this.token = localStorage.getItem('token');
+    // const socketUrl = 'http://localhost:8070/api/chat/ws';
+    //
+    // this.chatService.subscribe('/topic/yourTopic').subscribe(
+    //   (response: any) => console.log(response)
+    // );
+    this.connect();
   }
 
-  sendMessage(): void {
-    if (this.messageContent.trim() !== '') {
-      const message = {
-        sender: 'User1',
-        content: this.messageContent
-      };
+  private connect(): void {
+    this.socket = new WebSocket('ws://localhost:8070/api/chat/ws');
 
-      // Отправка сообщения на сервер
-      this.chatService.publish('/app/chat', message);
-      this.messageContent = '';
-    }
+    this.socket.onopen = (event) => {
+      console.log('Connected to WebSocket', event);
+    };
+
+    this.socket.onclose = (event) => {
+      console.log('Disconnected from WebSocket', event);
+    };
+
+    this.socket.onerror = (error) => {
+      console.error('WebSocket error: ', error);
+    };
   }
 
-  ngOnDestroy(): void {
-    if(this.subscription) {
-      this.subscription.unsubscribe();
-    }
-    if (this.chatService) {
-      this.chatService.deactivate();
-    }
-  }
+  // sendMessage(): void {
+  //   if (this.messageContent.trim() !== '') {
+  //     const message = {
+  //       sender: 'User1',
+  //       content: this.messageContent
+  //     };
+  //
+  //     // Отправка сообщения на сервер
+  //     this.chatService.publish('/app/chat', message);
+  //     this.messageContent = '';
+  //   }
+  // }
+  //
+  // ngOnDestroy(): void {
+  //   if(this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  //   if (this.chatService) {
+  //     this.chatService.deactivate();
+  //   }
+  // }
 
 }
